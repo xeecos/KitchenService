@@ -1,0 +1,4 @@
+{
+  "presets": ["env"],
+  "plugins": [["import", { "libraryName": "antd-mobile", "style": "css" }]]
+}

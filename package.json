@@ -4,6 +4,10 @@
   "main": "dist/bundle.js",
   "repository": "https://github.com/xeecos/KitchenService",
   "author": "xeecos",
+  "scripts": {
+    "watch": "webpack --progress --colors --watch",
+    "start": "node ./dist/bundle.js"
+  },
   "license": "GPL",
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -13,6 +17,7 @@
   },
   "devDependencies": {
     "antd": "^3.0.2",
+    "antd-mobile": "^2.1.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.3",
@@ -21,6 +26,7 @@
     "css-loader": "^0.28.7",
     "jquery": "^3.2.1",
     "node-loader": "^0.6.0",
+    "rc-form": "^2.1.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
