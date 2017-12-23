@@ -28,7 +28,24 @@ class ResultPage extends React.Component {
     super();
   }
   render() {
-    return <div>Success!</div>;
+    return (
+      <div>
+        <List
+          renderHeader={() => {
+            "已成功提交";
+          }}
+        >
+          <Button
+            type="primary"
+            onClick={(() => {
+              window.location = "#";
+            }).bind(this)}
+          >
+            {"返回"}
+          </Button>
+        </List>
+      </div>
+    );
   }
 }
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -81,6 +98,7 @@ class Home extends React.Component {
   submitOrder() {
     $.post("/v1.0/attend", () => {
       console.log("successful!");
+      window.location = "#result";
     });
   }
   render() {
