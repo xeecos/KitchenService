@@ -1,6 +1,7 @@
 import os from "os";
 import fs from "fs";
 import path from "path";
+import { exec } from "child_process";
 import uuid from "uuid/v1";
 import LocalStorage from "./localStorage";
 import { Printer, USBAdapter, ConsoleAdapter } from "@pokusew/escpos";
