@@ -3,12 +3,16 @@ import fs from "fs";
 import path from "path";
 import uuid from "uuid/v1";
 import LocalStorage from "./localStorage";
+import { Printer, USBAdapter, ConsoleAdapter } from "@pokusew/escpos";
 
 export default class SystemManager {
   constructor(router) {
     const self = this;
     this.router = router;
     this.port = process.env.PORT || 8080;
+    this.usersCount = 0;
+    this.device = new USBAdapter();
+    this.printer = new Printer(this.device);
     this.getLocalIP().then(
       (ip => {
         console.log(
@@ -20,7 +24,57 @@ export default class SystemManager {
     router.get("/", (req, res) => {
       res.sendFile(path.join(self.publicDir() + "/index.html"));
     });
+    router.post("/attend", this.onAttend.bind(this));
     this.initUser();
+  }
+  printCard(index, zone, startTime, endTime, msg) {
+    var memberIndex = ("00" + index).substr(-3, 3);
+    this.device.open().then(() => {
+      this.printer
+        .font("b")
+        .align("ct")
+        .style("bu")
+        .size(1, 1)
+        .text("你是第" + memberIndex + "个订餐的小伙伴")
+        .text("           ")
+        .text("————————————————")
+        .text("           ")
+        .size(1, 1)
+        .align("lt")
+        .text("    就餐区")
+        .text("           ")
+        .size(2, 2)
+        .align("ct")
+        .text(zone)
+        .size(1, 1)
+        .text("           ")
+        .align("lt")
+        .text("    就餐时间：")
+        .align("ct")
+        .text("           ")
+        .size(1, 1)
+        .text(startTime + " - " + endTime)
+        .text("           ")
+        .text("————————————————")
+        .text("           ")
+        .size(1, 1)
+        .align("lt")
+        .text("    " + msg)
+        .text("           ")
+        .text("           ")
+        .cut();
+    });
+  }
+  onAttend(req, res) {
+    this.usersCount++;
+    this.printCard(
+      this.usersCount,
+      "山景峡谷",
+      "11:35",
+      "11:45",
+      "四季度生日趴体将于2017年12月25日下午4点在烽火台举办，欢迎大家光临"
+    );
+    res.send("ok");
   }
   /**
    * 获取本地IP

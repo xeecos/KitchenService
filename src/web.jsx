@@ -78,6 +78,11 @@ class Home extends React.Component {
     }
     return e && e.fileList;
   }
+  submitOrder() {
+    $.post("/v1.0/attend", () => {
+      console.log("successful!");
+    });
+  }
   render() {
     const { getFieldProps } = this.props.form;
     return (
@@ -107,7 +112,7 @@ class Home extends React.Component {
             ref={el => (this.customFocusInst = el)}
             clear
           >
-            {"工卡号 *"}
+            {"我的工号 *"}
           </InputItem>
           <WhiteSpace size="lg" />
           <CheckTimes />
@@ -115,7 +120,9 @@ class Home extends React.Component {
           <RiceSelector />
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
-          <Button type="primary">{"提交"}</Button>
+          <Button type="primary" onClick={this.submitOrder}>
+            {"提交"}
+          </Button>
         </List>
       </div>
     );
