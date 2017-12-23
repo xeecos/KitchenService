@@ -14,6 +14,7 @@ export default class SystemManager {
     this.usersCount = LocalStorage.get("count");
     this.device = new USBAdapter();
     this.printer = new Printer(this.device);
+    this.zones = ["哎哟你呀", "山景峡谷", "冥想峡谷"];
     this.setName("Printer");
     this.getLocalIP().then(
       (ip => {
@@ -74,7 +75,9 @@ export default class SystemManager {
     var eTime = sTime + 10;
     this.printCard(
       this.usersCount,
-      "山景峡谷",
+      this.usersCount % 6 == 0
+        ? this.zones[2]
+        : this.usersCount % 4 == 0 ? this.zones[1] : this.zones[0],
       "12:" + ("0" + sTime.toString()).substr(-2, 2),
       "12:" + ("0" + eTime.toString()).substr(-2, 2),
       "makeblock第四季度生日派对将于2017年12月25日下午3点半在多功能厅举办，欢迎大家光临"
