@@ -5581,6 +5581,13 @@ var Home = function (_React$Component3) {
       return e && e.fileList;
     }
   }, {
+    key: "submitOrder",
+    value: function submitOrder() {
+      _jquery2.default.post("/v1.0/attend", function () {
+        console.log("successful!");
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this5 = this;
@@ -5622,7 +5629,7 @@ var Home = function (_React$Component3) {
               },
               clear: true
             }),
-            "工卡号 *"
+            "我的工号 *"
           ),
           _react2.default.createElement(_whiteSpace2.default, { size: "lg" }),
           _react2.default.createElement(CheckTimes, null),
@@ -5632,7 +5639,7 @@ var Home = function (_React$Component3) {
           _react2.default.createElement(_whiteSpace2.default, { size: "lg" }),
           _react2.default.createElement(
             _button2.default,
-            { type: "primary" },
+            { type: "primary", onClick: this.submitOrder },
             "提交"
           )
         )

@@ -34,7 +34,7 @@ module.exports = [
     target: "node",
     externals: {
       serialport: "commonjs serialport",
-      usb: "commonjs usb"
+      "@pokusew/usb": "commonjs @pokusew/usb"
     },
     plugins: [
       new webpack.DefinePlugin({
