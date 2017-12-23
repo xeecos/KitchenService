@@ -33,7 +33,8 @@ module.exports = [
     },
     target: "node",
     externals: {
-      serialport: "commonjs serialport"
+      serialport: "commonjs serialport",
+      usb: "commonjs usb"
     },
     plugins: [
       new webpack.DefinePlugin({
