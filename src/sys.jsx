@@ -44,7 +44,7 @@ export default class SystemManager {
         .text("           ")
         .size(1, 1)
         .align("lt")
-        .text("    就餐区")
+        .text("    就餐区：")
         .text("           ")
         .size(2, 2)
         .align("ct")
