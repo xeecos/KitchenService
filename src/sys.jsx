@@ -51,7 +51,7 @@ export default class SystemManager {
         .size(1, 1)
         .text("           ")
         .align("lt")
-        .text("    就餐时间：")
+        .text("    午餐时间：")
         .align("ct")
         .text("           ")
         .size(1, 1)
@@ -69,12 +69,14 @@ export default class SystemManager {
   }
   onAttend(req, res) {
     this.usersCount++;
+    var sTime = Math.round(Math.random() * 30);
+    var eTime = sTime + 10;
     this.printCard(
       this.usersCount,
       "山景峡谷",
-      "11:35",
-      "11:45",
-      "四季度生日趴体将于2017年12月25日下午4点在烽火台举办，欢迎大家光临"
+      "12:" + ("0" + sTime.toString()).substr(-2, 2),
+      "12:" + ("0" + eTime.toString()).substr(-2, 2),
+      "makeblock第四季度生日派对将于2017年12月25日下午4点在烽火台举办，欢迎大家光临\n    ༾( ˊ ˅ ˋ )༿❤︎༾( ˊ ˅ ˋ )༿"
     );
     res.send("ok");
   }
