@@ -76,7 +76,7 @@ export default class SystemManager {
       "山景峡谷",
       "12:" + ("0" + sTime.toString()).substr(-2, 2),
       "12:" + ("0" + eTime.toString()).substr(-2, 2),
-      "makeblock第四季度生日派对将于2017年12月25日下午4点在烽火台举办，欢迎大家光临\n    ༾( ˊ ˅ ˋ )༿❤︎༾( ˊ ˅ ˋ )༿"
+      "makeblock第四季度生日派对将于2017年12月25日下午3点半在多功能厅举办，欢迎大家光临\n    ༾( ˊ ˅ ˋ )༿❤︎༾( ˊ ˅ ˋ )༿"
     );
     res.send("ok");
   }
