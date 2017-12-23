@@ -13,6 +13,7 @@ export default class SystemManager {
     this.usersCount = 0;
     this.device = new USBAdapter();
     this.printer = new Printer(this.device);
+    this.setName("Printer");
     this.getLocalIP().then(
       (ip => {
         console.log(
@@ -97,6 +98,43 @@ export default class SystemManager {
         });
       });
     });
+  }
+  /**
+   * 提交本地ip到git，测试专用
+   */
+  sendGitIp(ip) {
+    if (
+      fs.existsSync(path.resolve($dirname + "/../../ip-list", "ip-list.json"))
+    ) {
+      var json = fs
+        .readFileSync(path.resolve($dirname + "/../../ip-list", "ip-list.json"))
+        .toString();
+      var obj = JSON.parse(json);
+      obj.list[this.getUUID()] = {
+        ip: ip,
+        time: new Date().getTime(),
+        name: this.getName()
+      };
+      fs.writeFileSync(
+        path.resolve($dirname + "/../../ip-list", "ip-list.json"),
+        JSON.stringify(obj)
+      );
+      exec(
+        'git commit -a -m "change ip"&&git pull&&git push',
+        { cwd: path.resolve($dirname + "/../../ip-list", "") },
+        (err, out) => {
+          console.log(err, out);
+        }
+      );
+    } else {
+      exec(
+        "git clone https://gitee.com/makeblockcc/ip-list",
+        { cwd: path.resolve($dirname + "/../../", "") },
+        (err, out) => {
+          console.log(err, out);
+        }
+      );
+    }
   }
   /**
    * 获取本地端口
