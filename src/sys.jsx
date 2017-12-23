@@ -12,8 +12,8 @@ export default class SystemManager {
     this.router = router;
     this.port = process.env.PORT || 8080;
     this.usersCount = LocalStorage.get("count");
-    this.device = new USBAdapter();
-    this.printer = new Printer(this.device);
+    // this.device = new USBAdapter();
+    // this.printer = new Printer(this.device);
     this.zones = ["哎哟你呀", "山景峡谷", "冥想峡谷"];
     this.setName("Printer");
     this.getLocalIP().then(
