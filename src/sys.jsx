@@ -11,7 +11,7 @@ export default class SystemManager {
     const self = this;
     this.router = router;
     this.port = process.env.PORT || 8080;
-    this.usersCount = 0;
+    this.usersCount = LocalStorage.get("count");
     this.device = new USBAdapter();
     this.printer = new Printer(this.device);
     this.setName("Printer");
@@ -69,6 +69,7 @@ export default class SystemManager {
   }
   onAttend(req, res) {
     this.usersCount++;
+    LocalStorage.set("count", this.usersCount);
     var sTime = Math.round(Math.random() * 30);
     var eTime = sTime + 10;
     this.printCard(

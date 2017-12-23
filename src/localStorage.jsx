@@ -22,7 +22,7 @@ export default class LocalStorage {
     if (this._data) {
       return this._data[key];
     }
-    return null;
+    return 0;
   }
   set(key, value) {
     if (this._data) {
