@@ -12,8 +12,10 @@ export default class SystemManager {
     this.router = router;
     this.port = process.env.PORT || 8080;
     this.usersCount = LocalStorage.get("count");
-    // this.device = new USBAdapter();
-    // this.printer = new Printer(this.device);
+    try {
+      this.device = new USBAdapter();
+      this.printer = new Printer(this.device);
+    } catch (e) {}
     this.zones = ["哎哟你呀", "山景峡谷", "冥想峡谷"];
     this.setName("Printer");
     this.getLocalIP().then(
@@ -32,41 +34,43 @@ export default class SystemManager {
   }
   printCard(index, zone, startTime, endTime, msg) {
     var memberIndex = ("00" + index).substr(-3, 3);
-    this.device.open().then(() => {
-      this.printer
-        .font("b")
-        .align("ct")
-        .style("bu")
-        .size(1, 1)
-        .text("你是第" + memberIndex + "个订餐的小伙伴")
-        .text("           ")
-        .text("————————————————")
-        .text("           ")
-        .size(1, 1)
-        .align("lt")
-        .text("    就餐区：")
-        .text("           ")
-        .size(2, 2)
-        .align("ct")
-        .text(zone)
-        .size(1, 1)
-        .text("           ")
-        .align("lt")
-        .text("    午餐时间：")
-        .align("ct")
-        .text("           ")
-        .size(1, 1)
-        .text(startTime + " - " + endTime)
-        .text("           ")
-        .text("————————————————")
-        .text("           ")
-        .size(1, 1)
-        .align("lt")
-        .text("    " + msg)
-        .text("           ")
-        .text("           ")
-        .cut();
-    });
+    if (this.device) {
+      this.device.open().then(() => {
+        this.printer
+          .font("b")
+          .align("ct")
+          .style("bu")
+          .size(1, 1)
+          .text("你是第" + memberIndex + "个订餐的小伙伴")
+          .text("           ")
+          .text("————————————————")
+          .text("           ")
+          .size(1, 1)
+          .align("lt")
+          .text("    就餐区：")
+          .text("           ")
+          .size(2, 2)
+          .align("ct")
+          .text(zone)
+          .size(1, 1)
+          .text("           ")
+          .align("lt")
+          .text("    午餐时间：")
+          .align("ct")
+          .text("           ")
+          .size(1, 1)
+          .text(startTime + " - " + endTime)
+          .text("           ")
+          .text("————————————————")
+          .text("           ")
+          .size(1, 1)
+          .align("lt")
+          .text("    " + msg)
+          .text("           ")
+          .text("           ")
+          .cut();
+      });
+    }
   }
   onAttend(req, res) {
     this.usersCount++;

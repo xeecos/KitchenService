@@ -1,1 +1,4 @@
-{"user":{"uuid":"1378dc00-e6e0-11e7-b983-ef6c402bc636","name":"Printer"},"count":2}
+{
+  "user": { "uuid": "1378dc00-e6e0-11e7-b983-ef6c402bc636", "name": "Printer" },
+  "count": 2
+}
