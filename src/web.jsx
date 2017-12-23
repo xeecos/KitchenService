@@ -210,7 +210,7 @@ class World extends React.Component {
   }
 }
 $(document).ready(() => {
-  document.title = "makeblock员工就餐系统 v1.0";
+  document.title = "点餐系统 v1.0";
 });
 class NewWorld extends React.Component {
   constructor() {
