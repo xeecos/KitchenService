@@ -5742,7 +5742,7 @@ var World = function (_React$Component5) {
 }(_react2.default.Component);
 
 (0, _jquery2.default)(document).ready(function () {
-  document.title = "数字食堂 v1.0";
+  document.title = "makeblock员工就餐系统 v1.0";
 });
 _reactDom2.default.render(_react2.default.createElement(World, null), document.getElementById("content"));
 

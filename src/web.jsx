@@ -184,6 +184,6 @@ class World extends React.Component {
   }
 }
 $(document).ready(() => {
-  document.title = "数字食堂 v1.0";
+  document.title = "makeblock员工就餐系统 v1.0";
 });
 ReactDOM.render(<World />, document.getElementById("content"));
