@@ -35,6 +35,7 @@ class ResultPage extends React.Component {
             "已成功提交";
           }}
         >
+          {"已成功提交"}
           <Button
             type="primary"
             onClick={(() => {
