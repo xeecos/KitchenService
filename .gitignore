@@ -59,3 +59,5 @@ typings/
 
 *.lock
 .vscode
+dist 
+public/web.bundle.js
