@@ -1,0 +1,8 @@
+.content {
+  background-image: url(assets/bg.png);
+  background-size: 100%;
+}
+body {
+  margin: 0 0;
+  background-color: #3d74a7;
+}

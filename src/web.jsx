@@ -201,7 +201,7 @@ class World extends React.Component {
               if (props.location.hash.indexOf("result") > -1) {
                 return <ResultPage hash={props.location.hash} />;
               }
-              return <WrapperHome />;
+              return <NewWorld />;
             }}
           />
         </BrowserRouter>
@@ -212,4 +212,27 @@ class World extends React.Component {
 $(document).ready(() => {
   document.title = "makeblock员工就餐系统 v1.0";
 });
+class NewWorld extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div className="content">
+        <div>
+          <img
+            src="/assets/content.png"
+            width="100%"
+            onClick={() => {
+              $.post("/v1.0/attend", () => {
+                console.log("successful!");
+                window.location = "#result";
+              });
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+}
 ReactDOM.render(<World />, document.getElementById("content"));
