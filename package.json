@@ -26,7 +26,6 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.6",
-    "image-webpack-loader": "^3.4.2",
     "jquery": "^3.2.1",
     "node-loader": "^0.6.0",
     "rc-form": "^2.1.6",
